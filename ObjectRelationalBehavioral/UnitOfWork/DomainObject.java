@@ -1,4 +1,4 @@
-package ObjectRelational.UnitOfWork;
+package ObjectRelationalBehavioral.UnitOfWork;
 
 public class DomainObject {
     protected void markNew() {

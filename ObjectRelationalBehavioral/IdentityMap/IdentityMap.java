@@ -1,4 +1,4 @@
-package ObjectRelational.IdentityMap;
+package ObjectRelationalBehavioral.IdentityMap;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package ObjectRelational.LazyLoad.Simple;
+package ObjectRelationalBehavioral.LazyLoad.Simple;
 
 import java.util.List;
 

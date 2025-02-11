@@ -1,4 +1,4 @@
-package ObjectRelational.LazyLoad.VirtualProxy;
+package ObjectRelationalBehavioral.LazyLoad.VirtualProxy;
 
 import java.util.List;
 

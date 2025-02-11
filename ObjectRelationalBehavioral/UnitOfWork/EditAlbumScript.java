@@ -1,4 +1,4 @@
-package ObjectRelational.UnitOfWork;
+package ObjectRelationalBehavioral.UnitOfWork;
 
 public class EditAlbumScript {
     public static void updateTitle(long albumId, String title) {

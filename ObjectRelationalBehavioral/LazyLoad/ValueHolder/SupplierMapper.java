@@ -1,9 +1,9 @@
-package ObjectRelational.LazyLoad.ValueHolder;
+package ObjectRelationalBehavioral.LazyLoad.ValueHolder;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import ObjectRelational.UnitOfWork.DomainObject;
+import ObjectRelationalBehavioral.UnitOfWork.DomainObject;
 
 public class SupplierMapper {
     protected DomainObject doLoad(long id, ResultSet rs) throws SQLException {

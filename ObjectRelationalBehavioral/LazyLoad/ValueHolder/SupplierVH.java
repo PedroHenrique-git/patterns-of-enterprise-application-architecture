@@ -1,4 +1,4 @@
-package ObjectRelational.LazyLoad.ValueHolder;
+package ObjectRelationalBehavioral.LazyLoad.ValueHolder;
 
 import java.util.List;
 

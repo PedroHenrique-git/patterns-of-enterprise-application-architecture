@@ -1,10 +1,10 @@
-package ObjectRelational.LazyLoad.VirtualProxy;
+package ObjectRelationalBehavioral.LazyLoad.VirtualProxy;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import ObjectRelational.UnitOfWork.DomainObject;
+import ObjectRelationalBehavioral.UnitOfWork.DomainObject;
 
 public class SupplierMapper {
     public static class ProductLoader implements VirtualListLoader {
