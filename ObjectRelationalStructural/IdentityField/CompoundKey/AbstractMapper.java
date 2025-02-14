@@ -64,4 +64,74 @@ public abstract class AbstractMapper {
     protected Key createKey(ResultSet rs) throws SQLException {
         return new Key(rs.getLong(1));
     }
+
+    public Key insert(DomainObjectWithKey subject) {
+        try {
+            return performInsert(subject, findNextDatabaseKeyObject());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected Key performInsert(DomainObjectWithKey subject, Key key) throws SQLException {
+        subject.setKey(key);
+
+        PreparedStatement stmt = DB.prepare(insertStatementString());
+
+        insertKey(subject, stmt);
+        insertData(subject, stmt);
+
+        stmt.executeQuery();
+
+        loadedMap.put(subject.getKey(), subject);
+
+        return subject.getKey();
+    }
+
+    abstract protected String insertStatementString();
+
+    protected void insertKey(DomainObjectWithKey subject, PreparedStatement stmt) throws SQLException {
+        stmt.setLong(1, subject.getKey().longValue());
+    }
+
+    abstract protected void insertData(DomainObjectWithKey subject, PreparedStatement stmt) throws SQLException;
+
+    public void update(DomainObjectWithKey subject) {
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = DB.prepare(updateStatementString());
+            loadUpdateStatement(subject, stmt);
+            stmt.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            DB.cleanUp(stmt);
+        }
+    }
+
+    abstract protected String updateStatementString();
+
+    abstract protected void loadUpdateStatement(DomainObjectWithKey subject, PreparedStatement stmt)
+            throws SQLException;
+
+    public void delete(DomainObjectWithKey subject) {
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = DB.prepare(deleteStatementString());
+            loadDeleteStatement(subject, stmt);
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            DB.cleanUp(stmt);
+        }
+    }
+
+    abstract protected String deleteStatementString();
+
+    protected void loadDeleteStatement(DomainObjectWithKey subject, PreparedStatement stmt) throws SQLException {
+        stmt.setLong(1, subject.getKey().longValue());
+    }
 }
