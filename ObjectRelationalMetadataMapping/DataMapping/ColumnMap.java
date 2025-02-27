@@ -32,4 +32,12 @@ public class ColumnMap {
             throw new ApplicationException("Error in setting" + fieldName, e);
         }
     }
+
+    public Object getValue(Object subject) {
+        try {
+            return field.get(subject);
+        } catch (Exception e) {
+            throw new ApplicationException(e);
+        }
+    }
 }
