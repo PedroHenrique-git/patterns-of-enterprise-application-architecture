@@ -1,4 +1,4 @@
-package WebPresentation.JspHandler;
+package WebPresentation.PageController.JspHandler;
 
 public class AlbumConHelper extends HelperController {
     public void init(HttpServletRequest request, HttpServletResponse response) {

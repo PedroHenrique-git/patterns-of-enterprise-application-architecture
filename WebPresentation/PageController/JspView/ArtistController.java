@@ -1,4 +1,4 @@
-package WebPresentation.JspView;
+package WebPresentation.PageController.JspView;
 
 import java.io.IOException;
 
